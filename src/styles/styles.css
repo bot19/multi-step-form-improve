@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+/* Color Theme using CSS 4 @theme directive */
+@theme {
+  /* TODO: should be pixel-based */
+  --breakpoint-xs: 32rem; /* 512px */
+
+  --base-font-size: 16px;
+
+  --color-primary: #733ca4; /* dark purple */
+  --color-secondary: #000000; /* black, text */
+  --color-accent: #22f0c0; /* light green, CTA */
+  --color-gray-light: #efefef; /* bg gray */
+  /* using gray-X00 for darker grays */
+  --color-light: #ffffff; /* bg white */
+}
+
+/* Base styles */
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-size: var(--base-font-size);
+
+  color-scheme: light dark;
+  color: var(--color-secondary);
+  background-color: var(--color-light);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-gray-light);
+  overflow-x: hidden;
+}
+
+/* Hide number input spinners */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
+}
