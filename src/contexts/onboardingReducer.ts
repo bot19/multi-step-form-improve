@@ -22,6 +22,7 @@ export const onboardingReducer = (
   action: OnboardingAction
 ): OnboardingState => {
   switch (action.type) {
+    // TODO: next/prev could be removed & go-to-step could be used instead.
     case 'NEXT_STEP':
       return {
         ...state,
@@ -43,6 +44,7 @@ export const onboardingReducer = (
         ),
       };
 
+    // TODO: not yet used.
     case 'SET_MOBILE_AUTH':
       return {
         ...state,

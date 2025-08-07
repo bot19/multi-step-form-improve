@@ -34,7 +34,7 @@ export const OnboardForm = () => {
     resolver: zodResolver(OnboardSchema),
     mode: 'onChange',
     shouldUnregister: false,
-    shouldFocusError: false,
+    shouldFocusError: false, // TODO: prob could be true, can't progress unless prev fields valid.
   });
 
   useFormPersistence(formMethods, FORM_STORAGE_KEYS.ONBOARDING);

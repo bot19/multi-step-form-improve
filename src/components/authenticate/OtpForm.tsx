@@ -50,6 +50,7 @@ export const OtpForm = (props: OtpFormProps) => {
     }
   }, [props.authFormState, setFocus]);
 
+  // TODO: long, can abstract?
   const onSubmit: SubmitHandler<MobileOtpType> = async data => {
     try {
       const mobile = getMobileNumber();

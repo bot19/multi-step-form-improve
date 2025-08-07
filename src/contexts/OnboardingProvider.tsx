@@ -11,7 +11,7 @@ interface OnboardingProviderProps {
   initialStep?: number;
 }
 
-const ONBOARDING_STATE_KEY = 'onboarding-state';
+const ONBOARDING_STATE_KEY = 'onboarding-state'; // TODO: make DRY
 
 // Load initial state from localStorage
 const getInitialState = (initialStep: number): OnboardingState => {
@@ -53,6 +53,7 @@ export const OnboardingProvider = ({
     localStorage.setItem(ONBOARDING_STATE_KEY, JSON.stringify(state));
   }, [state]);
 
+  // NOTE: to satisfy: react-x/no-unstable-context-value (controversial)
   const value = useMemo<OnboardingContextType>(
     () => ({ state, dispatch }),
     [state, dispatch]
