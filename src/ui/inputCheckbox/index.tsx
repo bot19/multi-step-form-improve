@@ -18,6 +18,7 @@ interface InputCheckboxProps {
   [key: string]: unknown; // Allow additional props to be passed through
 }
 
+// how to: https://samueledwin.com/posts/react-hook-form-numbers-dates-checkboxes/
 export const InputCheckbox = ({
   // disabled,
   error,
