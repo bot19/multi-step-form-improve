@@ -7,6 +7,7 @@ import reactX from 'eslint-plugin-react-x';
 import reactDom from 'eslint-plugin-react-dom';
 import prettier from 'eslint-config-prettier';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import eslintPluginVitest from 'eslint-plugin-vitest';
 
 export default tseslint.config([
   globalIgnores(['dist']),
@@ -51,6 +52,17 @@ export default tseslint.config([
       globals: {
         ...globals.node,
       },
+    },
+  },
+  {
+    files: ['**/*.test.{js,ts,jsx,tsx}'],
+    plugins: {
+      vitest: eslintPluginVitest,
+    },
+    rules: {
+      // Optional: enable Vitest rules
+      // 'vitest/no-focused-tests': 'error',
+      // 'vitest/no-disabled-tests': 'warn',
     },
   },
 ]);
