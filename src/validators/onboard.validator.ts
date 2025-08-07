@@ -17,28 +17,37 @@ export const MobileOtpSchema = z.object({
 export type MobileOtpType = z.infer<typeof MobileOtpSchema>;
 
 // personal details
-export const UserDetailsSchema = z.object({
-  fullName: z
-    .string()
-    .min(3, 'Full name must be at least 3 characters')
-    .max(128, 'Full name must be less than 128 characters'),
-  email: z.email({ message: 'Please enter a valid email address' }),
-  dateOfBirth: z
-    .string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/, 'Please select a valid date')
-    .refine(
-      date => {
-        const selectedDate = new Date(date);
-        const minDate = new Date(DATE_OF_BIRTH_MIN);
-        const maxDate = new Date(DATE_OF_BIRTH_MAX);
-        return selectedDate >= minDate && selectedDate <= maxDate;
-      },
-      {
-        message: `Date of birth must be between ${DATE_OF_BIRTH_MIN.split('-')[0]} and ${DATE_OF_BIRTH_MAX.split('-')[0]}`,
-      }
-    ),
-  gender: z.string().optional(),
-});
+export const UserDetailsSchema = z
+  .object({
+    fullName: z
+      .string()
+      .min(3, 'Full name must be at least 3 characters')
+      .max(128, 'Full name must be less than 128 characters'),
+    email: z.email({ message: 'Please enter a valid email address' }),
+    dateOfBirth: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/, 'Please select a valid date')
+      .refine(
+        date => {
+          const selectedDate = new Date(date);
+          const minDate = new Date(DATE_OF_BIRTH_MIN);
+          const maxDate = new Date(DATE_OF_BIRTH_MAX);
+          return selectedDate >= minDate && selectedDate <= maxDate;
+        },
+        {
+          message: `Date of birth must be between ${DATE_OF_BIRTH_MIN.split('-')[0]} and ${DATE_OF_BIRTH_MAX.split('-')[0]}`,
+        }
+      ),
+    gender: z.string().optional(),
+    emailContact: z.boolean().optional(),
+    mobileContact: z.boolean().optional(),
+    smsContact: z.boolean().optional(),
+  })
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+  .refine(data => data.emailContact || data.mobileContact || data.smsContact, {
+    message: 'Please select at least one contact method',
+    path: ['smsContact'],
+  });
 export type UserDetailsType = z.infer<typeof UserDetailsSchema>;
 
 // password validation rules

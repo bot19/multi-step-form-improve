@@ -1,6 +1,7 @@
 import {
   Button,
   InputBasic,
+  InputCheckbox,
   InputSelect,
   ProgressIndicator,
   Card,
@@ -85,6 +86,29 @@ export const StepUserDetails = () => {
           {...register('gender')}
         />
 
+        <InputCheckbox
+          error={errors.smsContact}
+          label="Contact preference (pick at least 1)"
+          checkboxes={[
+            {
+              name: 'emailContact',
+              ariaDescription: 'email-contact-description',
+              text: 'Email',
+            },
+            {
+              name: 'mobileContact',
+              ariaDescription: 'mobile-contact-description',
+              text: 'Mobile',
+            },
+            {
+              name: 'smsContact',
+              ariaDescription: 'sms-contact-description',
+              text: 'SMS',
+            },
+          ]}
+          requiredLabel={true}
+        />
+
         <div className="grid grid-cols-4 gap-4">
           <Button
             colour="light"
@@ -111,6 +135,9 @@ export const StepUserDetails = () => {
                   'email',
                   'dateOfBirth',
                   'gender',
+                  'emailContact',
+                  'mobileContact',
+                  'smsContact',
                 ]).then(isValid => {
                   if (isValid) {
                     dispatch({ type: 'NEXT_STEP' });

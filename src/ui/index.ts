@@ -5,6 +5,7 @@ export { Feedback } from './Feedback';
 export { Footer } from './Footer';
 export { Heading } from './Heading';
 export { InputBasic } from './InputBasic';
+export { InputCheckbox } from './inputCheckbox';
 export { InputSelect } from './InputSelect';
 export { Logo } from './Logo';
 export { PasswordStrengthIndicator } from './PasswordStrengthIndicator';
