@@ -20,6 +20,7 @@ interface MobileNumberFormProps {
 export const MobileNumberForm = (props: MobileNumberFormProps) => {
   const formMethods = useForm<MobileNumberType>({
     resolver: zodResolver(MobileNumberSchema),
+    shouldFocusError: true, // NOTE: doesn't re-focus on manual setError
   });
 
   useFormPersistence(formMethods, FORM_STORAGE_KEYS.MOBILE_NUMBER);
